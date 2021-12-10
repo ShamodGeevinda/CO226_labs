@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LAB 2</title>
+</head>
+
+<body>
+    <h1>Buy T-shirts Online</h1>
+    <h2>Fill out the form below and click "Order now" to order</h2>
+    <form action="E18397Lab2get.php" method="GET">
+        <table>
+            <tr>
+                <th>
+                    Search by order number:
+                </th>
+                <td colspan="2">
+                    <input type="text">
+                    <button type="button">Search</button>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Choose your size:
+                </th>
+                <td>
+                    <input type="radio" name="size" value="Small">
+                    <label for="small">Small</label>
+                    <input type="radio" name="size" value="Medium">
+                    <label for="medium">Medium</label>
+                    <input type="radio" name="size" value="Large">
+                    <label for="large">Large</label>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Choose your color:
+                </th>
+                <td>
+                    <select name="color" id="color">
+                        <option value="Red">Red</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Green">Green</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    Extra items:
+                </th>
+                <td>
+                    <input type="checkbox" name="ex_cap" value="Cap">Cap
+                    <br>
+                    <input type="checkbox" name="ex_band" value="Wrist Band">Wrist Band
+                </td>
+            </tr>
+
+            <tr>
+
+                <th>Deliver to:</th>
+                <td>
+                    <table>
+                        <tr>
+                            <th>First Name:</th>
+                            <td><input type="text" name="fname"> </td>
+                        </tr>
+                        <tr>
+                            <th>Last name:</th>
+                            <td><input type="text" name="lname"> </td>
+                        </tr>
+                        <tr>
+                            <th>Address1:</th>
+                            <td><input type="text" name="addr1"> </td>
+                        </tr>
+                        <tr>
+                            <th>Address2:</th>
+                            <td><input type="text" name="addr2"> </td>
+                        </tr>
+                        <tr>
+                            <th>Address3:</th>
+                            <td><input type="text" name="addr3"> </td>
+                        </tr>
+
+                    </table>
+                </td>
+            </tr>
+
+            <tr>
+                <th>Your Comments:</th>
+                <td colspan="2"><textarea name="comments" id="comments" cols="60" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="submit">Order Now</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

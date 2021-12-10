@@ -1,0 +1,15 @@
+CREATE TABLE Book
+(BookID CHAR(5),
+Title VARCHAR(50),
+Author VARCHAR(30),
+Category INT,
+Price NUMERIC(8,2),
+PubID CHAR(6)
+)
+
+CREATE TABLE Publisher
+(PubID CHAR(6),
+PublisherName VARCHAR(30),
+RegisteredDate DATE,
+Country VARCHAR(15)
+);
