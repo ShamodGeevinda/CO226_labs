@@ -1,0 +1,42 @@
+show databases;
+create database E18397Lab03;
+use E18397Lab03;
+
+create table order_details(
+order_no int NOT NULL AUTO_INCREMENT,
+size char(1),
+color varchar(15),
+cap bit,
+wband bit,
+fname varchar(20),
+lname varchar(20),
+addr1 varchar(40),
+addr2 varchar(40),
+addr3 varchar(40),
+comments varchar(50),
+PRIMARY KEY (order_no)
+);
+
+desc order_details;
+
+insert into order_details(size, color, cap, wband, fname, lname, addr1, addr2, addr3, comments  )
+values ('M','Green', 1,1, 'Kusal', 'Mendis', '99', 'Sea street', 'Colombo 05', 'Good shopping experience' ),
+('M','Red', 1,1, 'Ramesh', 'Mendis', '568', 'Havelock road', 'Colombo', 'Good customer service' ),
+('L','Purple', 0,1, 'Kusal', 'Perera', '182/2', 'Wawala Junction', 'Piliyandala', 'Use good courier service' ),
+('S','Red', 1,1, 'Pathum', 'Nissanka', 'Thisara', 'Hospital road', 'Maharagama', 'send quickly' ),
+('M','Blue', 1,0, 'Charith', 'Asalanka', 'B 2/3', 'Govt, Flats', 'Dehiwala', 'send the package as soon as possible' ),
+('L','Green', 0,0, 'Anjelo', 'Mathews', '853/2', 'Senanayake Aveneue', 'Rajagiriya', 'Send this before next saturaday' )
+;
+
+select * from order_details;
+
+update order_details set cap = 1 where cap =0;
+update order_details set size='L' where order_no = 5;
+update order_details set wband = 1 where size ='L';
+
+delete form order_details where order_no =3;
+delete from order_details where size ='S';
+delete from order_details where color='Green' and size='M';
+
+insert into order_details(size, color, cap, wband, fname, lname, addr1, addr2, addr3, comments  )
+values ('M','Green', 1,1, 'Kusal', 'Mendis', '99', 'Sea street', 'Colombo 05', 'Good shopping experience' );

@@ -1,0 +1,34 @@
+create table Publisher(
+PubID VARCHAR(6),
+PublisherName VARCHAR(30),
+RegisteredDate Date,
+Country VARCHAR(15),
+PRIMARY KEY(PubID));
+
+
+
+create table Book(
+BookID VARCHAR(5),
+Title VARCHAR(50),
+Author VARCHAR(30),
+Category INT,
+Price FLOAT,
+PubID VARCHAR(6),
+PRIMARY KEY(BookID),
+FOREIGN KEY (PubID) REFERENCES Publisher(PubID));
+
+
+
+INSERT INTO Book
+VALUES ('B1', 'Excel', 'R. David', 2, 18.00, 'Pub02'),
+('B2', 'Computers', 'M. Thosmas', 4, 25.00, 'Pub02'),
+('B3', 'Access', 'P. Paul', 2, 30.00, 'Pub03'),
+('B4', 'Arts', 'W. Shiva', 1, 10.00, 'Pub04'),
+('B5', 'Science', 'A. Rahul', 3, 9.00, 'Pub01');
+
+
+INSERT INTO Publisher
+VALUES('Pub01', 'A.Press', '2001-05-12', 'Sri Lanka'),
+('Pub02', 'A.Books', '2010-03-20', 'India'),
+('Pub03', 'K.Brill', '2014-01-31', 'Poland'),
+('Pub04', 'A.Press', '2015-02-13', 'Sri Lanka');
