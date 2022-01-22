@@ -1,0 +1,88 @@
+create database E18397Lab05;
+show databases;
+
+create table Movie(
+Mid int AUTO_INCREMENT,
+Title VARCHAR(40),
+Year int(4),
+Director VARCHAR(40),
+PRIMARY KEY (Mid)
+);
+
+alter table Movie AUTO_INCREMENT = 101;
+
+create table Reviewer(
+Rid int AUTO_INCREMENT,
+Name varchar(40),
+PRIMARY KEY(Rid)
+);
+
+
+alter table Reviewer AUTO_INCREMENT = 201;
+
+
+create table Rating(
+Rid int,
+Mid int,
+Stars int(1),
+Rdate date,
+FOREIGN KEY(Rid) REFERENCES Reviewer (Rid)  ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY(Mid) REFERENCES Movie (Mid) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+insert into Movie(Title,Year,Director)
+ values
+ ('Gone with the Wind',1939,'Victor Fleming'),
+ ('Star Wars',1977,'George Lucas'),
+ ('The Sound of Music',1965,'Robert Wise'),
+ ('E.T.',1982,'Steven Spieibrg'),
+ ('Titanic',1997,'James Cameron'),
+ ('Snow White',1937,NULL),
+ ('Avatar',2009,'James Cameron'),
+ ('Raiders of the Lost Ark',1981,'Steven Spielberg');
+
+
+ insert into Reviewer(Name)
+ value
+ ('Sarah Martinez'),
+ ('Daniel Lewis'),
+ ('Brittany Harris'),
+ ('Mike Anderson'),
+ ('Chris Jackson'),
+ ('Elizabeth Thomas'),
+ ('James Cameron'),
+ ('Ashley White');
+
+
+ insert into Rating(Rid,Mid,Stars,RDate)
+ values
+ (201,101,2,'2011-01-22'),
+ (201,101,4,'2011-01-27'),
+ (202,106,4,NULL),
+ (203,103,2,'2011-01-20'),
+ (203,108,4,'2011-01-12'),
+ (203,108,2,'2011-01-30'),
+ (204,101,3,'2011-01-09'),
+ (205,103,3,'2011-01-27'),
+ (205,104,2,'2011-01-22'),
+ (205,108,4,NULL),
+ (206,107,3,'2011-01-15'),
+ (206,106,5,'2011-01-19'),
+ (207,107,5,'2011-01-20'),
+ (208,104,3,'2011-01-02');
+
+
+select * from Movie where Director='James Cameron'
+AND Year>=2000
+
+select a.Mid, a.Title,b.MId,b.RId,b.RatingStars from Movie a,Rating b;
+
+
+(select Director from Movie where Director is NOT NULL)
+UNION
+(select Name from Reviewer where Name is NOT NULL);
+
+
+select * from Movie where Director in 
+(select Name from Reviewer);
+
