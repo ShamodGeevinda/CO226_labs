@@ -1,0 +1,104 @@
+
+create table student(
+Name varchar(50),
+RegNo int primary key,
+GPA float,
+ConRegNo int,
+Class varchar(50) 
+);
+
+INSERT INTO Student(Name, RegNo, GPA) VALUES
+("Sameera", 425, 3.25),
+("Kasun", 210, 3.40),
+("Kalpa", 201, 3.10),
+("Chathura", 312, 3.85),
+("Lakmali", 473, 3.75),
+("Sidath", 352, 3.30),
+("Kumudu", 111, 3.70),
+("Nalin", 456, 3.05),
+("Rohani", 324, 3.70),
+("Chithra", 231, 3.30);
+
+create table Convocation(
+Lastname varchar(50),
+Address varchar(200),
+Age int,
+RegNO int,
+ConRegNO int primary key,
+foreign key (RegNO) references Student(RegNO)
+);
+
+
+DELIMITER // 
+create procedure AddDetails (RegNum int, Address varchar(200), age int, ConRNum int)
+BEGIN
+insert into convocation values ((select name from student where RegNO = RegNUM), Address, age, RegNum, ConRNum);
+update student SET ConRegNO = ConRNum where RegNO = RegNum;
+END //
+DELIMITER;
+
+
+call AddDetails(425, "221/2, Hendala road, Wattala", 26, 1);
+call AddDetails(312, "333, Old Moor Street, Colombo 12", 27, 2);
+call AddDetails(473, "114, Yatinuwara weediya, Kandy", 27, 3);
+call AddDetails(352, "98, Canal Bank Road, Off Hill Street, Dehiwala", 26, 4);
+call AddDetails(456, "NO 13, Kohilawatta, Angoda", 28, 5);
+
+
+
+create view  NotRegistered as
+select name, RegNO, GPA
+from student
+where ConRegNo is NULL;
+
+create table LateRegistration(
+Lastname varchar(50),
+Address varchar(200),
+Age int,
+RegNO int,
+ConRegNO int primary key,
+foreign key (RegNO) references Student(RegNO)
+);
+
+
+create trigger LateReg 
+after insert on Lateregistration
+for each row
+update student set ConRegNO = new.ConRegNO
+where RegNo = new.RegNo ;
+
+
+INSERT INTO LateRegistration VALUES
+("Kasun", "NO.52, Old Matara road, Pettigalawatta", 25, 210, 6),
+("Kalpa", " No. 427/1, Sooriyagoda, Murutalawa, kandy", 23, 201, 7),
+("Kumudu", "106, Jayasundara Mawatha, Kalutara", 4, 111, 8),
+("Rohani", "  NO.540, Yakkaduwa, Ja-ela", 23, 324, 9),
+("Chithra", " 83, Horana Road, Panadura", 25, 231, 10);
+
+delimiter //
+create procedure find_Class()
+begin
+update Student set Class='First class honors' where GPA>=3.7;
+update Student set Class='Second class honors-upper division' where GPA<3.7 and GPA>=3.3;
+update Student set Class='Second class honors-lower division' where GPA<3.3 and GPA>=2.7 ;
+update Student set Class='Third class honors' where GPA<2.7 and GPA>=2.0;
+end //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
